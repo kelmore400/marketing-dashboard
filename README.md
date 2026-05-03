@@ -1,7 +1,7 @@
 # Marketing Analytics Dashboard
 
 ## 🚀 Live Demo
-https://marketing-dashboard.vercel.app
+https://marketing-dashboard-olga.vercel.app
 
 ## 🛠 Tech Stack
 - React

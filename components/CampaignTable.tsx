@@ -37,7 +37,7 @@ export default function CampaignTable() {
                 value={filter}
                 onChange={(e) => setFilter(e.target.value)}
             />
-            <table className="w-full min-w-[600px]">
+            <table className="w-full min-w-[600px] text-left">
                 <thead>
                 <tr className="border-b">
                     <th className="py-2">Campaign</th>

@@ -1,0 +1,26 @@
+export const campaigns = [
+    {
+        id: 1,
+        name: "Google Ads",
+        clicks: 1200,
+        cost: 540,
+        conversions: 48,
+        date: "2024-01-01",
+    },
+    {
+        id: 2,
+        name: "Facebook Ads",
+        clicks: 980,
+        cost: 430,
+        conversions: 32,
+        date: "2024-01-01",
+    },
+    {
+        id: 3,
+        name: "Instagram Promo",
+        clicks: 760,
+        cost: 310,
+        conversions: 21,
+        date: "2024-01-01",
+    },
+];

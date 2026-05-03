@@ -5,8 +5,8 @@ import { trafficData } from "@/data/traffic";
 
 export default function TrafficLineChart() {
     return (
-        <div className="bg-white p-6 rounded-xl shadow-sm border h-[380px]">
-            <h2 className="text-lg font-semibold mb-4">Traffic Overview</h2>
+        <div className="bg-white p-4 md:p-6 rounded-xl shadow-sm border h-[320px] md:h-[380px]">
+        <h2 className="text-lg font-semibold mb-4">Traffic Overview</h2>
 
             <ResponsiveContainer width="100%" height={300}>
                 <LineChart data={trafficData}>

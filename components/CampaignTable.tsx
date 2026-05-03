@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import {useEffect, useState} from "react";
 import { campaigns } from "@/data/campaigns";
+import Pagination from "@/components/Pagination";
 
 export default function CampaignTable() {
     const [sortField, setSortField] = useState<"clicks" | "cost" | "conversions">("clicks");
@@ -27,6 +28,19 @@ export default function CampaignTable() {
         c.name.toLowerCase().includes(filter.toLowerCase())
     );
 
+    const [currentPage, setCurrentPage] = useState(1);
+    const itemsPerPage = 10;
+
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+
+    const paginated = filtered.slice(startIndex, endIndex);
+
+    useEffect(() => {
+        setCurrentPage(1);
+    }, [filter, sortField, sortOrder]);
+
+
     return (
         <div className="bg-white p-6 rounded-xl shadow-sm border mt-6 overflow-x-auto">
             <h2 className="text-lg font-semibold mb-4">Campaign Performance</h2>
@@ -50,6 +64,10 @@ export default function CampaignTable() {
                     <th className="py-2 cursor-pointer" onClick={() => toggleSort("conversions")}>
                         Conversions
                     </th>
+                    <th>CTR (%)</th>
+                    <th>CPC (€)</th>
+                    <th>CPA (€)</th>
+                    <th>ROI (%)</th>
                 </tr>
                 </thead>
 
@@ -60,6 +78,10 @@ export default function CampaignTable() {
                         <td className="py-2">{c.clicks}</td>
                         <td className="py-2">{c.cost}</td>
                         <td className="py-2">{c.conversions}</td>
+                        <td>{(c.clicks / 10000 * 100).toFixed(2)}</td>
+                        <td>{(c.cost / c.clicks).toFixed(2)}</td>
+                        <td>{(c.cost / c.conversions).toFixed(2)}</td>
+                        <td>{(((c.conversions * 20 - c.cost) / c.cost) * 100).toFixed(1)}</td>
                     </tr>
                 ))}
                 {filtered.length === 0 && (
@@ -71,6 +93,12 @@ export default function CampaignTable() {
                 )}
                 </tbody>
             </table>
+            <Pagination
+                currentPage={currentPage}
+                totalItems={filtered.length}
+                itemsPerPage={itemsPerPage}
+                onPageChange={setCurrentPage}
+            />
         </div>
     );
 }

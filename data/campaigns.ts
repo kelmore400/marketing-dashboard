@@ -5,6 +5,10 @@ export const campaigns = [
         clicks: 1200,
         cost: 540,
         conversions: 48,
+        ctr: (1200 / 10000) * 100,
+        cpc: 450 / 1200,
+        cpa: 450 / 80,
+        roi: (80 * 20 - 450) / 450 * 100,
         date: "2024-01-01",
     },
     {
